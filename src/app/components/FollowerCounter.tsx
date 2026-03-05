@@ -1,0 +1,32 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
+export default function FollowerCounter({ target }: { target: number }) {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    let start = 0;
+    const duration = 2000;
+    const increment = target / (duration / 16);
+
+    const timer = setInterval(() => {
+      start += increment;
+
+      if (start >= target) {
+        start = target;
+        clearInterval(timer);
+      }
+
+      setCount(Math.floor(start));
+    }, 16);
+
+    return () => clearInterval(timer);
+  }, [target]);
+
+  return (
+    <span>
+      {count.toLocaleString()}
+    </span>
+  );
+}
