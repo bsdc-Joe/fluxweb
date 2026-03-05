@@ -10,11 +10,13 @@ import StaggerContainer from "./components/StaggerContainer";
 import SectionDivider from "./components/SectionDivider";
 import Particles from "./components/Particles";
 import CountUp from "./components/CountUp";
+import PageTransition from "./components/PageTransition";
+import EmailCapture from "./components/EmailCapture";
 
 const LINKS = {
-  tiktokTactics:  "https://tiktok.com/@fluxfut",
-  tiktokTrading:  "https://tiktok.com/@fluxfuttrading",
-  tiktokComp:     "https://tiktok.com/@fluxfutcomp",
+  tiktokTactics:  "https://www.tiktok.com/@flux.fut",
+  tiktokTrading:  "https://www.tiktok.com/@moreflux",
+  tiktokComp:     "https://www.tiktok.com/@fluxevolutions",
   instagram:      "https://instagram.com/fluxfut",
   youtube:        "https://youtube.com/@fluxfut",
   twitter:        "https://twitter.com/fluxfut",
@@ -25,24 +27,24 @@ const LINKS = {
 };
 
 const socials = [
-  { id:"tiktok-tactics", platform:"TikTok", label:"Tactics", handle:"@FluxFut",
-    desc:"Formation breakdowns, in-game adjustments and meta-winning systems updated every patch.",
-    displayFollowers:"180K+", href:LINKS.tiktokTactics, accent:"rgba(236,72,153,0.35)", tag:"Tactics", icon:<TikTokIcon/> },
-  { id:"tiktok-trading", platform:"TikTok", label:"Trading", handle:"@FluxFutTrading",
-    desc:"Coin-making methods, SBC solutions and market alerts to build your dream squad fast.",
-    displayFollowers:"95K+", href:LINKS.tiktokTrading, accent:"rgba(236,72,153,0.35)", tag:"Trading", icon:<TikTokIcon/> },
-  { id:"tiktok-comp", platform:"TikTok", label:"Competitive", handle:"@FluxFutComp",
-    desc:"Rivals & WL prep, elite mental frameworks and pro-level player analysis.",
-    displayFollowers:"150K+", href:LINKS.tiktokComp, accent:"rgba(236,72,153,0.35)", tag:"Competitive", icon:<TikTokIcon/> },
+  { id:"tiktok-tactics", platform:"TikTok", label:"FluxFut", handle:"@flux.fut",
+    desc:"Best meta cards, Top 3 players for every budget and Top 10 best players in the game at every position.",
+    displayFollowers:"100", href:LINKS.tiktokTactics, accent:"rgba(236,72,153,0.35)", tag:"Meta & Players", icon:<TikTokIcon/> },
+  { id:"tiktok-trading", platform:"TikTok", label:"MoreFlux", handle:"@moreflux",
+    desc:"Fun series about EAFC26 and past games. Viral formats, nostalgia and everything entertaining about FC.",
+    displayFollowers:"100", href:LINKS.tiktokTrading, accent:"rgba(236,72,153,0.35)", tag:"Fun & Series", icon:<TikTokIcon/> },
+  { id:"tiktok-comp", platform:"TikTok", label:"FluxEvolutions", handle:"@fluxevolutions",
+    desc:"Every FC26 Evolution covered — which evos are worth it, best paths and hidden value picks.",
+    displayFollowers:"100", href:LINKS.tiktokComp, accent:"rgba(236,72,153,0.35)", tag:"Evolutions", icon:<TikTokIcon/> },
   { id:"instagram", platform:"Instagram", label:"Instagram", handle:"@FluxFut",
-    desc:"Daily squad inspo, patch breakdowns and behind-the-scenes content.",
-    displayFollowers:"62K+", href:LINKS.instagram, accent:"rgba(249,115,22,0.3)", tag:"Daily", icon:<InstagramIcon/> },
+    desc:"Reels from all three TikTok channels plus exclusive posts — squad builds, card ratings and tier lists.",
+    displayFollowers:"9K", href:LINKS.instagram, accent:"rgba(249,115,22,0.3)", tag:"Reels + Posts", icon:<InstagramIcon/> },
   { id:"youtube", platform:"YouTube", label:"YouTube", handle:"FluxFut",
-    desc:"Long-form guides, deep-dive analysis and exclusive content not found anywhere else.",
-    displayFollowers:"28K+", href:LINKS.youtube, accent:"rgba(220,38,38,0.35)", tag:"Long-form", icon:<YouTubeIcon/> },
+    desc:"Shorts mirroring all TikTok content daily, plus long-form guides, evo walkthroughs and squad breakdowns.",
+    displayFollowers:"18K", href:LINKS.youtube, accent:"rgba(220,38,38,0.35)", tag:"Shorts + Long-form", icon:<YouTubeIcon/> },
   { id:"twitter", platform:"Twitter / X", label:"Twitter / X", handle:"@FluxFut",
-    desc:"Instant meta reactions, patch hot-takes and real-time community conversation.",
-    displayFollowers:"41K+", href:LINKS.twitter, accent:"rgba(14,165,233,0.3)", tag:"Real-time", icon:<XIcon/> },
+    desc:"FC26 leaks, meta card reveals, SBC solutions the moment they drop and real-time patch reactions.",
+    displayFollowers:"100", href:LINKS.twitter, accent:"rgba(14,165,233,0.3)", tag:"Leaks & News", icon:<XIcon/> },
 ];
 
 const freePerks = ["Community chat","Weekly tips","Meta updates","Basic tactics","Market news","SBC alerts"];
@@ -94,10 +96,10 @@ export default function Home() {
             <p className="text-center text-xs text-blue-300/50 tracking-widest uppercase mb-12">Combined community reach</p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
               {[
-                { label:"TikTok", target:425000, suffix:"+" },
-                { label:"Instagram", target:62000, suffix:"+" },
-                { label:"YouTube", target:28000, suffix:"+" },
-                { label:"Twitter / X", target:41000, suffix:"+" },
+                { label:"TikTok", target:300, suffix:"+" },
+                { label:"Instagram", target:9000, suffix:"+" },
+                { label:"YouTube", target:18000, suffix:"+" },
+                { label:"Twitter / X", target:100, suffix:"+" },
               ].map((stat) => (
                 <div key={stat.label} className="group relative p-6 sm:p-8 rounded-2xl border border-blue-400/10 bg-gradient-to-b from-blue-500/[0.07] to-transparent text-center hover:border-blue-400/30 transition-all duration-300">
                   <p className="text-3xl sm:text-4xl font-semibold text-white mb-1">
@@ -108,7 +110,7 @@ export default function Home() {
               ))}
             </div>
             <p className="text-center text-blue-100/40 text-sm mt-8">
-              Trusted by <span className="text-white font-medium">425,000+</span> EAFC players worldwide
+              Trusted by <span className="text-white font-medium">27,300+</span> EAFC players worldwide
             </p>
           </div>
         </FadeIn>
@@ -229,6 +231,11 @@ export default function Home() {
 
       <SectionDivider />
 
+      {/* EMAIL CAPTURE */}
+      <EmailCapture />
+
+      <SectionDivider />
+
       {/* CTA */}
       <section className="py-32 px-4 sm:px-6 text-center border-t border-blue-400/10">
         <FadeIn>
@@ -253,7 +260,7 @@ export default function Home() {
           <div>
             <h4 className="font-medium text-white mb-4">Socials</h4>
             <ul className="space-y-2 text-blue-100/50">
-              {[["TikTok – Tactics",LINKS.tiktokTactics],["TikTok – Trading",LINKS.tiktokTrading],["TikTok – Comp",LINKS.tiktokComp],["Instagram",LINKS.instagram],["YouTube",LINKS.youtube],["Twitter / X",LINKS.twitter]].map(([label,href])=>(
+              {[["@flux.fut",LINKS.tiktokTactics],["@moreflux",LINKS.tiktokTrading],["@fluxevolutions",LINKS.tiktokComp],["Instagram",LINKS.instagram],["YouTube",LINKS.youtube],["Twitter / X",LINKS.twitter]].map(([label,href])=>(
                 <li key={label}><a href={href} target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors">{label}</a></li>
               ))}
             </ul>

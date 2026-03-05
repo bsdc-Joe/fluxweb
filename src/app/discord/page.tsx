@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "../components/Navbar";
 import FadeIn from "../components/FadeIn";
 import FadeUp from "../components/FadeUp";
@@ -8,6 +9,7 @@ import StaggerContainer from "../components/StaggerContainer";
 import SectionDivider from "../components/SectionDivider";
 import Particles from "../components/Particles";
 import Button from "../components/Button";
+import PageTransition from "../components/PageTransition";
 import CountUp from "../components/CountUp";
 
 // ── REPLACE THESE ──────────────────────────────────────────────────────────
@@ -39,6 +41,7 @@ const premiumPerks = [
 
 export default function DiscordPage() {
   return (
+    <PageTransition>
     <main className="relative text-white pt-20 overflow-hidden">
 
       <div className="fixed inset-0 -z-10 overflow-hidden">
@@ -211,6 +214,54 @@ export default function DiscordPage() {
 
       <SectionDivider />
 
+      {/* ── FAQ ── */}
+      <section id="faq" className="py-24 px-4 sm:px-6">
+        <div className="max-w-3xl mx-auto">
+          <FadeIn>
+            <h2 className="text-4xl sm:text-5xl font-semibold text-center mb-4">FAQs</h2>
+            <p className="text-center text-blue-100/50 mb-16 max-w-md mx-auto">
+              Everything you need to know before joining.
+            </p>
+          </FadeIn>
+          <StaggerContainer>
+            <div className="space-y-3">
+              {[
+                {
+                  q: "What's the difference between Free and Premium?",
+                  a: "Free gives you access to the community, weekly tips, meta updates, basic tactics, market news and SBC alerts. Premium unlocks everything else — custom tactics packs, live trading alerts, advanced squad builders, patch breakdowns, 1-on-1 coaching, private strategy channels, early content access and weekly live sessions.",
+                },
+                {
+                  q: "Can I cancel my Premium subscription at any time?",
+                  a: "Yes, completely. Cancel any time via Whop and you won't be charged again. You keep access until the end of your current billing period.",
+                },
+                {
+                  q: "How do I access the Premium Discord after paying?",
+                  a: "After subscribing on Whop, you'll be given instant access to the private Premium channels within the FluxFut Discord server. The whole process takes under 2 minutes.",
+                },
+                {
+                  q: "Is the Premium Discord worth £9.99/mo?",
+                  a: "One good trade tip or tactic from the Premium channels can easily save or make you hundreds of thousands of coins per month. Most members say it pays for itself within the first week.",
+                },
+                {
+                  q: "How often is content updated in the server?",
+                  a: "Free channels are updated regularly throughout the week. Premium channels are active daily — live trading alerts go out within minutes of market shifts, and tactics are updated within hours of every major patch.",
+                },
+                {
+                  q: "I'm new to EAFC — is this suitable for beginners?",
+                  a: "Absolutely. The Free Discord is a great starting point with beginner-friendly tactics and tips. Premium is built to accelerate improvement at every level, from newcomers to Weekend League players.",
+                },
+              ].map((faq, i) => (
+                <FadeUp key={i}>
+                  <FAQItem q={faq.q} a={faq.a} />
+                </FadeUp>
+              ))}
+            </div>
+          </StaggerContainer>
+        </div>
+      </section>
+
+      <SectionDivider />
+
       {/* FOOTER CTA */}
       <section className="py-24 px-4 sm:px-6 text-center border-t border-blue-400/10">
         <FadeIn>
@@ -257,6 +308,44 @@ export default function DiscordPage() {
       </footer>
 
     </main>
+    </PageTransition>
+  );
+}
+
+function FAQItem({ q, a }: { q: string; a: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div
+      className={`rounded-2xl border transition-all duration-300 overflow-hidden cursor-pointer ${
+        open ? "border-blue-400/30 bg-blue-500/[0.07]" : "border-blue-400/10 bg-blue-500/[0.03] hover:border-blue-400/20"
+      }`}
+      onClick={() => setOpen((v) => !v)}
+    >
+      <div className="flex items-center justify-between px-6 py-5 gap-4">
+        <p className="text-sm sm:text-base font-medium text-white/90 text-left">{q}</p>
+        <motion.div
+          animate={{ rotate: open ? 180 : 0 }}
+          transition={{ duration: 0.2 }}
+          className="flex-shrink-0 w-6 h-6 rounded-full bg-blue-500/10 border border-blue-400/20 flex items-center justify-center text-blue-400"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} className="w-3 h-3">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </motion.div>
+      </div>
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25, ease: "easeInOut" }}
+          >
+            <p className="px-6 pb-5 text-sm text-blue-100/60 leading-relaxed">{a}</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 }
 
